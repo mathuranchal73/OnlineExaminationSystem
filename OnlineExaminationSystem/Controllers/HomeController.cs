@@ -10,6 +10,9 @@ namespace OnlineExaminationSystem.Controllers
     {
         public ActionResult Index()
         {
+            var _ctx = new OESEntities();
+            ViewBag.Tests = _ctx.Tests.Where(x => x.IsActive == 1).Select(x => new { x.Id, x.Name }).ToList();
+                
             return View();
         }
 
