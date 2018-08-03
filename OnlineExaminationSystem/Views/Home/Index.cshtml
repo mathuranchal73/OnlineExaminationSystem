@@ -2,12 +2,13 @@
     ViewBag.Title = "Home Page";
 }
 
+@model OnlineExaminationSystem.Models.SessionModel
 <div class="jumbotron">
   
-    <h2><span style="color:#808080;"><i>Online </i></span>Exam System</h2>
+    <h2><span style="color:darkorange"><i>Online </i></span>Exam System</h2>
 </div>
 
-@using (Html.BeginForm("Instruction", "Home", FormMethod.Post))
+@using (Html.BeginForm("Instructions", "Home", FormMethod.Post))
 {
 
 <div class="container">
@@ -15,24 +16,24 @@
 
         <div class="form-group">
             <div class="col-md-3">@Html.Label("Select Test")</div>
-            <div class="col-md-5">@Html.DropDownList("wdjhbdkjwe",new SelectList(ViewBag.Tests,"Id","Name"),"--Select Test--")</div>
+            <div class="col-md-5">@Html.DropDownListFor(x=>x.TestId,new SelectList(ViewBag.Tests,"Id","Name",Model.TestId),"--Select Test--", new { @class="form-control"})</div>
         </div>
         <div class="form-group">
             <div class="col-md-3">@Html.Label("Enter Name")</div>
-            <div class="col-md-5">@Html.TextBox("wdhbiujh")</div>
+            <div class="col-md-5">@Html.TextBoxFor(x => x.UserName, Model.UserName, new { @class = "form-control" })</div>
         </div>
         <div class="form-group">
             <div class="col-md-3">@Html.Label("Enter Email")</div>
-            <div class="col-md-5">@Html.TextBox("wdhbiujh")</div>
+            <div class="col-md-5">@Html.TextBoxFor(x => x.Email, Model.Email, new { @class = "form-control" })</div>
         </div>
         <div class="form-group">
             <div class="col-md-3">@Html.Label("Enter Phone")</div>
-            <div class="col-md-5">@Html.TextBox("wdhbiujh")</div>
+            <div class="col-md-5">@Html.TextBoxFor(x => x.Phone, Model.Phone, new { @class = "form-control" })</div>
         </div>
 
         <div class="form-group">
             <div class="col-md-3"></div>
-            <div class="col-md-5"><input type="button" value="Submit" /></div>
+            <div class="col-md-5"><input type="submit" value="Submit" class="btn-primary"/></div>
         </div>
     </div>
     </div>
