@@ -25,8 +25,8 @@ namespace OnlineExaminationSystem
         public Nullable<int> StudentId { get; set; }
         public Nullable<int> TestId { get; set; }
         public Nullable<System.DateTime> RegistrationDate { get; set; }
-        public string Token { get; set; }
-        public Nullable<int> TokenExpireTime { get; set; }
+        public Nullable<System.Guid> Token { get; set; }
+        public Nullable<System.DateTime> TokenExpireTime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QuestionXDuration> QuestionXDurations { get; set; }

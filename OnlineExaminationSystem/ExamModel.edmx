@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OESModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ExamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Choice">
           <Key>
             <PropertyRef Name="Id" />
@@ -59,8 +59,8 @@
           <Property Name="StudentId" Type="int" />
           <Property Name="TestId" Type="int" />
           <Property Name="RegistrationDate" Type="datetime" />
-          <Property Name="Token" Type="nvarchar" MaxLength="150" />
-          <Property Name="TokenExpireTime" Type="int" />
+          <Property Name="Token" Type="uniqueidentifier" />
+          <Property Name="TokenExpireTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -88,7 +88,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar" MaxLength="450" />
           <Property Name="IsActive" Type="int" />
-          <Property Name="DurationInMinute" Type="int" />
+          <Property Name="DurationInMinute" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="TestXPaper">
           <Key>
@@ -108,7 +108,7 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="TestId" Type="int" />
           <Property Name="QuestionId" Type="int" />
-          <Property Name="QuestionNumber" Type="nchar" MaxLength="10" />
+          <Property Name="QuestionNumber" Type="int" />
           <Property Name="IsActive" Type="int" />
         </EntityType>
         <Association Name="FK__Choice__Question__403A8C7D">
@@ -183,7 +183,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Registrat__TestI__3D5E1FD2">
+        <Association Name="FK__Registrat__TestI__49C3F6B7">
           <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
           <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
           <ReferentialConstraint>
@@ -243,7 +243,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TestXQues__TestI__3C69FB99">
+        <Association Name="FK__TestXQues__TestI__4AB81AF0">
           <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
           <End Role="TestXQuestion" Type="Self.TestXQuestion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -255,7 +255,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OESModelStoreContainer">
+        <EntityContainer Name="ExamModelStoreContainer">
           <EntitySet Name="Choice" EntityType="Self.Choice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Exhibit" EntityType="Self.Exhibit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
@@ -291,7 +291,7 @@
             <End Role="Student" EntitySet="Student" />
             <End Role="Registration" EntitySet="Registration" />
           </AssociationSet>
-          <AssociationSet Name="FK__Registrat__TestI__3D5E1FD2" Association="Self.FK__Registrat__TestI__3D5E1FD2">
+          <AssociationSet Name="FK__Registrat__TestI__49C3F6B7" Association="Self.FK__Registrat__TestI__49C3F6B7">
             <End Role="Test" EntitySet="Test" />
             <End Role="Registration" EntitySet="Registration" />
           </AssociationSet>
@@ -311,7 +311,7 @@
             <End Role="Question" EntitySet="Question" />
             <End Role="TestXQuestion" EntitySet="TestXQuestion" />
           </AssociationSet>
-          <AssociationSet Name="FK__TestXQues__TestI__3C69FB99" Association="Self.FK__TestXQues__TestI__3C69FB99">
+          <AssociationSet Name="FK__TestXQues__TestI__4AB81AF0" Association="Self.FK__TestXQues__TestI__4AB81AF0">
             <End Role="Test" EntitySet="Test" />
             <End Role="TestXQuestion" EntitySet="TestXQuestion" />
           </AssociationSet>
@@ -320,7 +320,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="OESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ExamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Choice">
           <Key>
             <PropertyRef Name="Id" />
@@ -385,11 +385,11 @@
           <Property Name="StudentId" Type="Int32" />
           <Property Name="TestId" Type="Int32" />
           <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
-          <Property Name="Token" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="TokenExpireTime" Type="Int32" />
+          <Property Name="Token" Type="Guid" />
+          <Property Name="TokenExpireTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="QuestionXDurations" Relationship="Self.FK__QuestionX__Regis__2D27B809" FromRole="Registration" ToRole="QuestionXDuration" />
           <NavigationProperty Name="Student" Relationship="Self.FK__Registrat__Stude__25869641" FromRole="Registration" ToRole="Student" />
-          <NavigationProperty Name="Test" Relationship="Self.FK__Registrat__TestI__3D5E1FD2" FromRole="Registration" ToRole="Test" />
+          <NavigationProperty Name="Test" Relationship="Self.FK__Registrat__TestI__49C3F6B7" FromRole="Registration" ToRole="Test" />
           <NavigationProperty Name="TestXPapers" Relationship="Self.FK__TestXPape__Regis__2A4B4B5E" FromRole="Registration" ToRole="TestXPaper" />
         </EntityType>
         <EntityType Name="Student">
@@ -419,9 +419,9 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Int32" />
-          <Property Name="DurationInMinute" Type="Int32" />
-          <NavigationProperty Name="Registrations" Relationship="Self.FK__Registrat__TestI__3D5E1FD2" FromRole="Test" ToRole="Registration" />
-          <NavigationProperty Name="TestXQuestions" Relationship="Self.FK__TestXQues__TestI__3C69FB99" FromRole="Test" ToRole="TestXQuestion" />
+          <Property Name="DurationInMinute" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK__Registrat__TestI__49C3F6B7" FromRole="Test" ToRole="Registration" />
+          <NavigationProperty Name="TestXQuestions" Relationship="Self.FK__TestXQues__TestI__4AB81AF0" FromRole="Test" ToRole="TestXQuestion" />
         </EntityType>
         <EntityType Name="TestXPaper">
           <Key>
@@ -444,11 +444,11 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="TestId" Type="Int32" />
           <Property Name="QuestionId" Type="Int32" />
-          <Property Name="QuestionNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="QuestionNumber" Type="Int32" />
           <Property Name="IsActive" Type="Int32" />
           <NavigationProperty Name="Question" Relationship="Self.FK__TestXQues__Quest__412EB0B6" FromRole="TestXQuestion" ToRole="Question" />
           <NavigationProperty Name="QuestionXDurations" Relationship="Self.FK__QuestionX__TestX__38996AB5" FromRole="TestXQuestion" ToRole="QuestionXDuration" />
-          <NavigationProperty Name="Test" Relationship="Self.FK__TestXQues__TestI__3C69FB99" FromRole="TestXQuestion" ToRole="Test" />
+          <NavigationProperty Name="Test" Relationship="Self.FK__TestXQues__TestI__4AB81AF0" FromRole="TestXQuestion" ToRole="Test" />
           <NavigationProperty Name="TestXPapers" Relationship="Self.FK__TestXPape__TestX__37A5467C" FromRole="TestXQuestion" ToRole="TestXPaper" />
         </EntityType>
         <Association Name="FK__Choice__Question__403A8C7D">
@@ -547,7 +547,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Registrat__TestI__3D5E1FD2">
+        <Association Name="FK__Registrat__TestI__49C3F6B7">
           <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
           <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
           <ReferentialConstraint>
@@ -571,7 +571,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TestXQues__TestI__3C69FB99">
+        <Association Name="FK__TestXQues__TestI__4AB81AF0">
           <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
           <End Role="TestXQuestion" Type="Self.TestXQuestion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -595,7 +595,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OESEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OESEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Choices" EntityType="Self.Choice" />
           <EntitySet Name="Exhibits" EntityType="Self.Exhibit" />
           <EntitySet Name="Questions" EntityType="Self.Question" />
@@ -639,7 +639,7 @@
             <End Role="Student" EntitySet="Students" />
             <End Role="Registration" EntitySet="Registrations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Registrat__TestI__3D5E1FD2" Association="Self.FK__Registrat__TestI__3D5E1FD2">
+          <AssociationSet Name="FK__Registrat__TestI__49C3F6B7" Association="Self.FK__Registrat__TestI__49C3F6B7">
             <End Role="Test" EntitySet="Tests" />
             <End Role="Registration" EntitySet="Registrations" />
           </AssociationSet>
@@ -647,7 +647,7 @@
             <End Role="Registration" EntitySet="Registrations" />
             <End Role="TestXPaper" EntitySet="TestXPapers" />
           </AssociationSet>
-          <AssociationSet Name="FK__TestXQues__TestI__3C69FB99" Association="Self.FK__TestXQues__TestI__3C69FB99">
+          <AssociationSet Name="FK__TestXQues__TestI__4AB81AF0" Association="Self.FK__TestXQues__TestI__4AB81AF0">
             <End Role="Test" EntitySet="Tests" />
             <End Role="TestXQuestion" EntitySet="TestXQuestions" />
           </AssociationSet>
@@ -661,9 +661,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="OESModelStoreContainer" CdmEntityContainer="OESEntities">
+        <EntityContainerMapping StorageEntityContainer="ExamModelStoreContainer" CdmEntityContainer="OESEntities1">
           <EntitySetMapping Name="Choices">
-            <EntityTypeMapping TypeName="OESModel.Choice">
+            <EntityTypeMapping TypeName="ExamModel.Choice">
               <MappingFragment StoreEntitySet="Choice">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
@@ -674,14 +674,14 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Exhibits">
-            <EntityTypeMapping TypeName="OESModel.Exhibit">
+            <EntityTypeMapping TypeName="ExamModel.Exhibit">
               <MappingFragment StoreEntitySet="Exhibit">
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Questions">
-            <EntityTypeMapping TypeName="OESModel.Question">
+            <EntityTypeMapping TypeName="ExamModel.Question">
               <MappingFragment StoreEntitySet="Question">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="QuestionCategoryId" ColumnName="QuestionCategoryId" />
@@ -694,7 +694,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="QuestionCategories">
-            <EntityTypeMapping TypeName="OESModel.QuestionCategory">
+            <EntityTypeMapping TypeName="ExamModel.QuestionCategory">
               <MappingFragment StoreEntitySet="QuestionCategory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
@@ -702,7 +702,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="QuestionXDurations">
-            <EntityTypeMapping TypeName="OESModel.QuestionXDuration">
+            <EntityTypeMapping TypeName="ExamModel.QuestionXDuration">
               <MappingFragment StoreEntitySet="QuestionXDuration">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
@@ -714,7 +714,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Registrations">
-            <EntityTypeMapping TypeName="OESModel.Registration">
+            <EntityTypeMapping TypeName="ExamModel.Registration">
               <MappingFragment StoreEntitySet="Registration">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
@@ -726,7 +726,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Students">
-            <EntityTypeMapping TypeName="OESModel.Student">
+            <EntityTypeMapping TypeName="ExamModel.Student">
               <MappingFragment StoreEntitySet="Student">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -739,14 +739,14 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tables">
-            <EntityTypeMapping TypeName="OESModel.Table">
+            <EntityTypeMapping TypeName="ExamModel.Table">
               <MappingFragment StoreEntitySet="Table">
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tests">
-            <EntityTypeMapping TypeName="OESModel.Test">
+            <EntityTypeMapping TypeName="ExamModel.Test">
               <MappingFragment StoreEntitySet="Test">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -757,7 +757,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TestXPapers">
-            <EntityTypeMapping TypeName="OESModel.TestXPaper">
+            <EntityTypeMapping TypeName="ExamModel.TestXPaper">
               <MappingFragment StoreEntitySet="TestXPaper">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
@@ -769,7 +769,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TestXQuestions">
-            <EntityTypeMapping TypeName="OESModel.TestXQuestion">
+            <EntityTypeMapping TypeName="ExamModel.TestXQuestion">
               <MappingFragment StoreEntitySet="TestXQuestion">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TestId" ColumnName="TestId" />

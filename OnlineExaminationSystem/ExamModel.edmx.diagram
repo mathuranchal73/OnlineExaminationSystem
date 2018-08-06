@@ -4,30 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="48e73d13998c49e8bf3378bb1006ad1b" Name="Diagram1">
-        <EntityTypeShape EntityType="OESModel.Choice" Width="1.5" PointX="9" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="OESModel.Exhibit" Width="1.5" PointX="1.5" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="OESModel.Question" Width="1.5" PointX="3.75" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="OESModel.QuestionCategory" Width="1.5" PointX="1.5" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="OESModel.QuestionXDuration" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OESModel.Registration" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="OESModel.Student" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OESModel.Table" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OESModel.Test" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="OESModel.TestXPaper" Width="1.5" PointX="11.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OESModel.TestXQuestion" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="OESModel.FK__Choice__Question__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="OESModel.FK__TestXPape__Choic__36B12243" ManuallyRouted="false" />
-        <AssociationConnector Association="OESModel.FK__Question__Exhibi__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="OESModel.FK__Question__Questi__4222D4EF" ManuallyRouted="false" />
-        <AssociationConnector Association="OESModel.FK__TestXQues__Quest__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="OESModel.FK__QuestionX__Regis__2D27B809" ManuallyRouted="false" />
-        <AssociationConnector Association="OESModel.FK__QuestionX__TestX__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="OESModel.FK__Registrat__Stude__25869641" ManuallyRouted="false" />
-        <AssociationConnector Association="OESModel.FK__Registrat__TestI__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="OESModel.FK__TestXPape__Regis__2A4B4B5E" ManuallyRouted="false" />
-        <AssociationConnector Association="OESModel.FK__TestXQues__TestI__3C69FB99" ManuallyRouted="false" />
-        <AssociationConnector Association="OESModel.FK__TestXPape__TestX__37A5467C" ManuallyRouted="false" />
+      <Diagram DiagramId="2feed439db4d42ab96be097a450bade8" Name="Diagram1">
+        <EntityTypeShape EntityType="ExamModel.Choice" Width="1.5" PointX="9" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamModel.Exhibit" Width="1.5" PointX="1.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamModel.Question" Width="1.5" PointX="3.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamModel.QuestionCategory" Width="1.5" PointX="1.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamModel.QuestionXDuration" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamModel.Registration" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamModel.Student" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamModel.Table" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamModel.Test" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamModel.TestXPaper" Width="1.5" PointX="11.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamModel.TestXQuestion" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="ExamModel.FK__Choice__Question__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamModel.FK__TestXPape__Choic__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamModel.FK__Question__Exhibi__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamModel.FK__Question__Questi__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamModel.FK__TestXQues__Quest__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamModel.FK__QuestionX__Regis__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamModel.FK__QuestionX__TestX__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamModel.FK__Registrat__Stude__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamModel.FK__Registrat__TestI__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamModel.FK__TestXPape__Regis__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamModel.FK__TestXQues__TestI__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamModel.FK__TestXPape__TestX__37A5467C" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

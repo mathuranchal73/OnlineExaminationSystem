@@ -13,10 +13,10 @@ namespace OnlineExaminationSystem
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OESEntities : DbContext
+    public partial class OESEntities1 : DbContext
     {
-        public OESEntities()
-            : base("name=OESEntities")
+        public OESEntities1()
+            : base("name=OESEntities1")
         {
         }
     

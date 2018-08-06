@@ -3,7 +3,37 @@
     ViewBag.Title = "Instructions";
 }
 
+@model OnlineExaminationSystem.Models.SessionModel
+
 <div>
     <h1>Instructions</h1>
 </div>
+<div class="container">
+    <br /><br />
+    <div class="row">
+        <div class="col-md-6">
+            <h2>@ViewBag.TestName</h2>
+            @ViewBag.TestDescription
+        </div>
+        <div class="col-md-6">
+            Test Duration: @ViewBag.TestDuration minutes
 
+
+        </div>
+    </div>
+
+    @if (Model == null)
+    {
+        using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @id = "formRegister" }))
+        {
+            @Html.HiddenFor(x => Model.TestId)
+            @Html.HiddenFor(x => Model.UserName)
+            @Html.HiddenFor(x => Model.Email)
+            @Html.HiddenFor(x => Model.Phone)
+
+            <a href="javascript:void(0);" onclick="getElementById('formRegister').submit();" class="btn btn-primary">Register and Start</a>
+        }
+
+
+    }
+    </div>

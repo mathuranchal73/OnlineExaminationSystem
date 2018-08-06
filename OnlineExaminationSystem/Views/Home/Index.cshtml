@@ -7,6 +7,16 @@
   
     <h2><span style="color:darkorange"><i>Online </i></span>Exam System</h2>
 </div>
+@if(TempData["message"]!=null)
+{
+    <div class="row">
+        <div class="col-md-10">
+            <p>
+                @Html.Raw(TempData["message"])
+            </p>
+        </div>
+    </div>
+}
 
 @using (Html.BeginForm("Instructions", "Home", FormMethod.Post))
 {

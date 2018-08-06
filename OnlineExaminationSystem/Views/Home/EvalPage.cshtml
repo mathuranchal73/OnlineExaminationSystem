@@ -1,0 +1,25 @@
+﻿@model OnlineExaminationSystem.Models.QuestionModel
+    @Model.Question
+@Model.QuestionNumber
+
+<div class="row">
+    <div class="col-md-10">
+        <table>
+            <tr>
+
+                {
+                <td><a href="javascript:void(0);" class="btn btn-primary" onclick="saveBackward(this);"><< Save & Previous</a></td>
+                <td><a href="@Url.Action("EvalPage", new {@token=Session["TOKEN"],@tid=Session["TESTID"], @qno=(Model.QuestionNumber) })">@(i + 1)</a></td>
+                                
+                @for (int i = 0; i < Model.TotalQuestionInSet; i++)
+                {
+
+                }
+            </tr>
+        </table>
+
+    </div>
+
+
+</div>
+
