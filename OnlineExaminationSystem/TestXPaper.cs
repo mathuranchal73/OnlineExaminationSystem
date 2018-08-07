@@ -19,7 +19,7 @@ namespace OnlineExaminationSystem
         public Nullable<int> TestXQuestionId { get; set; }
         public Nullable<int> ChoiceId { get; set; }
         public string Answer { get; set; }
-        public Nullable<int> MarkScored { get; set; }
+        public Nullable<double> MarkScored { get; set; }
     
         public virtual Choice Choice { get; set; }
         public virtual Registration Registration { get; set; }

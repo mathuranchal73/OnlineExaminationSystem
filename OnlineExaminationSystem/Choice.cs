@@ -23,7 +23,7 @@ namespace OnlineExaminationSystem
         public int Id { get; set; }
         public Nullable<int> QuestionId { get; set; }
         public string Label { get; set; }
-        public Nullable<int> Points { get; set; }
+        public Nullable<double> Points { get; set; }
         public Nullable<int> isActive { get; set; }
     
         public virtual Question Question { get; set; }
