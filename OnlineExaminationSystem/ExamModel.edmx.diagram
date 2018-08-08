@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2feed439db4d42ab96be097a450bade8" Name="Diagram1">
+      <Diagram DiagramId="ec5d6ebbf0194998b8a1a708515aee1e" Name="Diagram1">
         <EntityTypeShape EntityType="ExamModel.Choice" Width="1.5" PointX="9" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ExamModel.Exhibit" Width="1.5" PointX="1.5" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ExamModel.Question" Width="1.5" PointX="3.75" PointY="9.5" IsExpanded="true" />
@@ -23,7 +23,7 @@
         <AssociationConnector Association="ExamModel.FK__TestXQues__Quest__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="ExamModel.FK__QuestionX__Regis__2D27B809" ManuallyRouted="false" />
         <AssociationConnector Association="ExamModel.FK__QuestionX__TestX__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="ExamModel.FK__Registrat__Stude__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="ExamModel.FK__Registrat__Stude__01142BA1" ManuallyRouted="false" />
         <AssociationConnector Association="ExamModel.FK__Registrat__TestI__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="ExamModel.FK__TestXPape__Regis__2A4B4B5E" ManuallyRouted="false" />
         <AssociationConnector Association="ExamModel.FK__TestXQues__TestI__4AB81AF0" ManuallyRouted="false" />

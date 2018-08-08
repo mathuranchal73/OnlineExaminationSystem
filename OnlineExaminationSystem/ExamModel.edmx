@@ -12,7 +12,7 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="QuestionId" Type="int" />
           <Property Name="Label" Type="nvarchar" MaxLength="50" />
-          <Property Name="Points" Type="int" />
+          <Property Name="Points" Type="float" />
           <Property Name="isActive" Type="int" />
         </EntityType>
         <EntityType Name="Exhibit">
@@ -28,9 +28,9 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="QuestionCategoryId" Type="int" />
           <Property Name="QuestionType" Type="nvarchar" MaxLength="50" />
-          <Property Name="Question1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Question1" Type="nvarchar" MaxLength="450" />
           <Property Name="ExhibitId" Type="int" />
-          <Property Name="Points" Type="int" />
+          <Property Name="Points" Type="decimal" Precision="18" Scale="0" />
           <Property Name="isActive" Type="int" />
         </EntityType>
         <EntityType Name="QuestionCategory">
@@ -99,7 +99,7 @@
           <Property Name="TestXQuestionId" Type="int" />
           <Property Name="ChoiceId" Type="int" />
           <Property Name="Answer" Type="nvarchar" MaxLength="50" />
-          <Property Name="MarkScored" Type="int" />
+          <Property Name="MarkScored" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="TestXQuestion">
           <Key>
@@ -171,7 +171,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Registrat__Stude__25869641">
+        <Association Name="FK__Registrat__Stude__01142BA1">
           <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
           <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
           <ReferentialConstraint>
@@ -287,7 +287,7 @@
             <End Role="TestXQuestion" EntitySet="TestXQuestion" />
             <End Role="QuestionXDuration" EntitySet="QuestionXDuration" />
           </AssociationSet>
-          <AssociationSet Name="FK__Registrat__Stude__25869641" Association="Self.FK__Registrat__Stude__25869641">
+          <AssociationSet Name="FK__Registrat__Stude__01142BA1" Association="Self.FK__Registrat__Stude__01142BA1">
             <End Role="Student" EntitySet="Student" />
             <End Role="Registration" EntitySet="Registration" />
           </AssociationSet>
@@ -328,7 +328,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="QuestionId" Type="Int32" />
           <Property Name="Label" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Points" Type="Int32" />
+          <Property Name="Points" Type="Double" />
           <Property Name="isActive" Type="Int32" />
           <NavigationProperty Name="Question" Relationship="Self.FK__Choice__Question__403A8C7D" FromRole="Choice" ToRole="Question" />
           <NavigationProperty Name="TestXPapers" Relationship="Self.FK__TestXPape__Choic__36B12243" FromRole="Choice" ToRole="TestXPaper" />
@@ -347,9 +347,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="QuestionCategoryId" Type="Int32" />
           <Property Name="QuestionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Question1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Question1" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="ExhibitId" Type="Int32" />
-          <Property Name="Points" Type="Int32" />
+          <Property Name="Points" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="isActive" Type="Int32" />
           <NavigationProperty Name="Choices" Relationship="Self.FK__Choice__Question__403A8C7D" FromRole="Question" ToRole="Choice" />
           <NavigationProperty Name="Exhibit" Relationship="Self.FK__Question__Exhibi__44FF419A" FromRole="Question" ToRole="Exhibit" />
@@ -388,7 +388,7 @@
           <Property Name="Token" Type="Guid" />
           <Property Name="TokenExpireTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="QuestionXDurations" Relationship="Self.FK__QuestionX__Regis__2D27B809" FromRole="Registration" ToRole="QuestionXDuration" />
-          <NavigationProperty Name="Student" Relationship="Self.FK__Registrat__Stude__25869641" FromRole="Registration" ToRole="Student" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Registrat__Stude__01142BA1" FromRole="Registration" ToRole="Student" />
           <NavigationProperty Name="Test" Relationship="Self.FK__Registrat__TestI__49C3F6B7" FromRole="Registration" ToRole="Test" />
           <NavigationProperty Name="TestXPapers" Relationship="Self.FK__TestXPape__Regis__2A4B4B5E" FromRole="Registration" ToRole="TestXPaper" />
         </EntityType>
@@ -403,7 +403,7 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PassHash" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Registrations" Relationship="Self.FK__Registrat__Stude__25869641" FromRole="Student" ToRole="Registration" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK__Registrat__Stude__01142BA1" FromRole="Student" ToRole="Registration" />
         </EntityType>
         <EntityType Name="Table">
           <Key>
@@ -432,7 +432,7 @@
           <Property Name="TestXQuestionId" Type="Int32" />
           <Property Name="ChoiceId" Type="Int32" />
           <Property Name="Answer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MarkScored" Type="Int32" />
+          <Property Name="MarkScored" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Choice" Relationship="Self.FK__TestXPape__Choic__36B12243" FromRole="TestXPaper" ToRole="Choice" />
           <NavigationProperty Name="Registration" Relationship="Self.FK__TestXPape__Regis__2A4B4B5E" FromRole="TestXPaper" ToRole="Registration" />
           <NavigationProperty Name="TestXQuestion" Relationship="Self.FK__TestXPape__TestX__37A5467C" FromRole="TestXPaper" ToRole="TestXQuestion" />
@@ -535,7 +535,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Registrat__Stude__25869641">
+        <Association Name="FK__Registrat__Stude__01142BA1">
           <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
           <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
           <ReferentialConstraint>
@@ -595,7 +595,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OESEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OESEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Choices" EntityType="Self.Choice" />
           <EntitySet Name="Exhibits" EntityType="Self.Exhibit" />
           <EntitySet Name="Questions" EntityType="Self.Question" />
@@ -635,7 +635,7 @@
             <End Role="TestXQuestion" EntitySet="TestXQuestions" />
             <End Role="QuestionXDuration" EntitySet="QuestionXDurations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Registrat__Stude__25869641" Association="Self.FK__Registrat__Stude__25869641">
+          <AssociationSet Name="FK__Registrat__Stude__01142BA1" Association="Self.FK__Registrat__Stude__01142BA1">
             <End Role="Student" EntitySet="Students" />
             <End Role="Registration" EntitySet="Registrations" />
           </AssociationSet>
@@ -661,7 +661,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ExamModelStoreContainer" CdmEntityContainer="OESEntities1">
+        <EntityContainerMapping StorageEntityContainer="ExamModelStoreContainer" CdmEntityContainer="OESEntities2">
           <EntitySetMapping Name="Choices">
             <EntityTypeMapping TypeName="ExamModel.Choice">
               <MappingFragment StoreEntitySet="Choice">

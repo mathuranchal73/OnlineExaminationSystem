@@ -26,7 +26,7 @@ namespace OnlineExaminationSystem
         public string QuestionType { get; set; }
         public string Question1 { get; set; }
         public Nullable<int> ExhibitId { get; set; }
-        public Nullable<double> Points { get; set; }
+        public Nullable<decimal> Points { get; set; }
         public Nullable<int> isActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

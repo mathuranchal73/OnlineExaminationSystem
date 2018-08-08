@@ -1,13 +1,4 @@
-﻿
-@{
-    ViewBag.Title = "Instructions";
-}
-
-@model OnlineExaminationSystem.Models.SessionModel
-
-<div>
-    <h1>Instructions</h1>
-</div>
+﻿@model OnlineExaminationSystem.Models.SessionModel
 <div class="container">
     <br /><br />
     <div class="row">
@@ -16,13 +7,40 @@
             @ViewBag.TestDescription
         </div>
         <div class="col-md-6">
-            Test Duration: @ViewBag.TestDuration minutes
-
-
+            Test Duration : @(ViewBag.TestDuration) minutes
+            <br />Total Question : @ViewBag.QuestionCount
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            Before you begin, please read the following instructions carefully.
+        </div>
+    </div>
+    <h3>How to score more ?</h3>
+    <ul>
+        <li>The test is used to evaluate your expertise, creativity, productivity, knowledge and decision making technique</li>
+        @*<li>You may use google or any other resources available(like Visual Studio etc.)*@
+        <li>You may use resources available (like Visual Studio etc.)</li>
+        <li>Do not use internet or external resources outside of this machine</li>
+        <li>Remember that this is a test of experience, so do not be satisfied with ONE answer or Descriptive type questions. The more </li>
+        <li>Negative Markings are applied on Multiple choice questions. The # of score deducted is based on the percentage(%) of error </li>
+    </ul>
+    <h3>How to use application?</h3>
+    <ul>
+        <li>Your answers are not tracked unless you click on the <span class="highlight"><b>Save and Next</b></span> button</li>
+        <li>Questions which has <b>Exercises</b>in them, use Visual Studio and write something like Completed/Done/Finished etc on </li>
+        <li>There is no <b>End</b>or <b>Submit</b>button to end the evaluation, just walk out when you are done</li>
+        <li>Your time starts immediately when you click the <span class="highlight"><b>Register and Start</b></span>button below</li>
+    </ul>
+    <h3>Tips</h3>
+    <ul>
+        <li>Recommended that you review all the questions before you start answering them. This will help plan your effort time</li>
+        <li>Answer in a way that shows that you are thinking and trying the best possible approach</li>
+    </ul>
 
-    @if (Model == null)
+
+
+    @if (Model!= null)
     {
         using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @id = "formRegister" }))
         {
@@ -36,4 +54,5 @@
 
 
     }
-    </div>
+
+</div>

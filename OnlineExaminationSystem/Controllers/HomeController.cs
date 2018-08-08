@@ -11,8 +11,8 @@ namespace OnlineExaminationSystem.Controllers
     {
         public ActionResult Index()
         {
-            var _ctx = new OESEntities1();
-            ViewBag.Tests = _ctx.Tests.Where(x => x.IsActive == 1).Select(x => new { x.Id, x.Name }).ToList();
+            var _ctx = new OESEntities2();
+            ViewBag.Tests = _ctx.Tests.Where(x => (x.IsActive == 1)).Select(x => new { x.Id, x.Name }).ToList();
 
             SessionModel _model = null;
             if (Session["SessionModel"] == null)
@@ -32,7 +32,7 @@ namespace OnlineExaminationSystem.Controllers
         {
             if(model!=null)
             {
-                var _ctx = new OESEntities1();
+                var _ctx = new OESEntities2();
                 var test = _ctx.Tests.Where(x => (x.IsActive == 1) && x.Id == model.TestId).FirstOrDefault();
                 if(test!=null)
                 {
@@ -42,7 +42,7 @@ namespace OnlineExaminationSystem.Controllers
                     ViewBag.TestDuration = test.DurationInMinute;
                 }
             }
-            return View();
+            return View(model);
         }
 
         public ActionResult Register(SessionModel model)
@@ -56,7 +56,7 @@ namespace OnlineExaminationSystem.Controllers
                 return RedirectToAction("Index");
             }
 
-            var _ctx = new OESEntities1();
+            var _ctx = new OESEntities2();
             //to register the user
 
             Student _user = _ctx.Students.Where(x => x.Name.Equals(model.UserName, StringComparison.InvariantCultureIgnoreCase)
@@ -123,9 +123,11 @@ namespace OnlineExaminationSystem.Controllers
             }
                 
        
-            var _ctx = new OESEntities1();
+            var _ctx = new OESEntities2();
+
+            //verify that the user is registered and is allowed to check the question
             var registration = _ctx.Registrations.Where(x => x.Token.Equals(token)).FirstOrDefault();
-            if (registration == null)
+            if (registration.Token == null)
             {
                 TempData["message"] = "This token is invalid";
                 return RedirectToAction("Ïndex");
@@ -175,7 +177,7 @@ namespace OnlineExaminationSystem.Controllers
 
 
                 _model.TotalQuestionInSet = _ctx.TestXQuestions.Where(x => (x.Question.isActive == 1) && x.TestId == registration.TestId).Count();
-
+                ViewBag.TimeExpire = registration.TokenExpireTime;
                 return View(_model);
             }
 
@@ -188,7 +190,7 @@ namespace OnlineExaminationSystem.Controllers
         [HttpPost]
         public ActionResult PostAnswer(AnswerModel choices)
         {
-            var _ctx = new OESEntities1();
+            var _ctx = new OESEntities2();
             var registration = _ctx.Registrations.Where(x => x.Token.Equals(choices.Token)).FirstOrDefault();
             if (registration == null)
             {
@@ -226,7 +228,7 @@ namespace OnlineExaminationSystem.Controllers
                             TestXQuestionId = testQuestionInfo.QID,
                             ChoiceId = x.Id,
                             Answer = "CHECKED",
-                            MarkScored = Math.Floor(testQuestionInfo.POINT / 100.00D) * (x.Points)
+                            MarkScored = Math.Floor((decimal)testQuestionInfo.POINT / 100.0M) * (decimal)(x.Points)
                         }
                         ).ToList();
 
@@ -240,7 +242,8 @@ namespace OnlineExaminationSystem.Controllers
                         RegistrationId = registration.Id,
                         TestXQuestionId = testQuestionInfo.QID,
                         ChoiceId = choices.UserChoices.FirstOrDefault().ChoiceId,
-                        MarkScored = 10.0
+                        MarkScored = 10,
+                        Answer=choices.Answer
                     });
 
                 
@@ -256,7 +259,7 @@ namespace OnlineExaminationSystem.Controllers
             {
                 nextQuestionNumber = _ctx.TestXQuestions.Where(x => x.TestId == choices.TestId
                 && x.QuestionNumber > choices.QuestionId)
-               .OrderBy(x => x.QuestionNumber).Take(1).Select(x => x.QuestionNumber).FirstOrDefault();
+               .OrderBy(x => x.QuestionNumber).Take(1).Select(x => x.QuestionNumber).FirstOrDefault().Value;
                 
                 
             }
@@ -265,7 +268,7 @@ namespace OnlineExaminationSystem.Controllers
             {
                 nextQuestionNumber = _ctx.TestXQuestions.Where(x => x.TestId == choices.TestId
                 && x.QuestionNumber > choices.QuestionId)
-               .OrderByDescending(x => x.QuestionNumber).Take(1).Select(x => x.QuestionNumber).FirstOrDefault();
+               .OrderByDescending(x => x.QuestionNumber).Take(1).Select(x => x.QuestionNumber).FirstOrDefault().Value;
             }
 
             if (nextQuestionNumber < 1)
