@@ -197,7 +197,7 @@ namespace OnlineExaminationSystem.Controllers
                 TempData["message"] = "This token is invalid";
                 return RedirectToAction("Ïndex");
             }
-            if (registration.TokenExpireTime < DateTime.UtcNow)
+            else if (registration.TokenExpireTime < DateTime.UtcNow)
             {
                 TempData["message"] = "The exam duration has expired at" + registration.TokenExpireTime.ToString();
                 return RedirectToAction("Ïndex");
