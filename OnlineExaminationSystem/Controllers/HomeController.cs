@@ -126,7 +126,7 @@ namespace OnlineExaminationSystem.Controllers
             var _ctx = new OESEntities2();
 
             //verify that the user is registered and is allowed to check the question
-            var registration = _ctx.Registrations.Where(x => x.Token.Equals(token)).FirstOrDefault();
+            var registration = _ctx.Registrations.Where(x => x.Token==token).FirstOrDefault();
             if (registration.Token == null)
             {
                 TempData["message"] = "This token is invalid";
@@ -191,7 +191,7 @@ namespace OnlineExaminationSystem.Controllers
         public ActionResult PostAnswer(AnswerModel choices)
         {
             var _ctx = new OESEntities2();
-            var registration = _ctx.Registrations.Where(x => x.Token.Equals(choices.Token)).FirstOrDefault();
+            var registration = _ctx.Registrations.Where(x => x.Token==choices.Token).FirstOrDefault();
             if (registration == null)
             {
                 TempData["message"] = "This token is invalid";
