@@ -156,7 +156,7 @@ namespace OnlineExaminationSystem.Controllers
                         Point = (int)x.Question.Points,
                         TestId = x.Test.Id,
                         TestName = x.Test.Name,
-                        options = x.Question.Choices.Where(y => (y.isActive == 1)).Select(y => new QuestionModel.QXOModel()
+                        options = x.Question.Choices.Where(y => (y.isActive == 1)).Select(y => new QXOModel()
                         {
                             ChoiceId = y.Id,
                             Label = y.Label,
@@ -255,7 +255,8 @@ namespace OnlineExaminationSystem.Controllers
             //get the next question depending on the direction
 
             var nextQuestionNumber = 1;
-            if(choices.Direction.Equals("forward", StringComparison.CurrentCultureIgnoreCase))
+            
+            if (choices.Direction.Equals("forward", StringComparison.CurrentCultureIgnoreCase))
             {
                 nextQuestionNumber = _ctx.TestXQuestions.Where(x => x.TestId == choices.TestId
                 && x.QuestionNumber > choices.QuestionId)
@@ -272,14 +273,17 @@ namespace OnlineExaminationSystem.Controllers
             }
 
             if (nextQuestionNumber < 1)
+
                 nextQuestionNumber = 1;
+           
+            
+           
 
-
-            return RedirectToAction("EvalPage", new
-            {
-                @token = Session["TOKEN"],
-                @qno = nextQuestionNumber
-            });
+                return RedirectToAction("EvalPage", new
+                {
+                    @token = Session["TOKEN"],
+                    @qno = nextQuestionNumber
+                });
         }
     }
 }

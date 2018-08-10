@@ -18,6 +18,7 @@ namespace OnlineExaminationSystem.Models
         public int Point { get; set; }
         public List<QXOModel> options { get; set; }
 
+    }
         public class QXOModel  //Questions X Options Model
         {
             public int ChoiceId { get; set; }
@@ -25,5 +26,5 @@ namespace OnlineExaminationSystem.Models
             public String Answer { get; set; }
         }
 
-    }
+    
 }
