@@ -1,51 +1,98 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page - C2C2</title>
 
-@model OnlineExaminationSystem.Models.SessionModel
-<div class="jumbotron">
-  
-    <h2><span style="color:darkorange"><i>Online </i></span>Exam System</h2>
-</div>
-@if(TempData["message"]!=null)
-{
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/site.css" />
+
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">C2C2</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Home/About">About</a></li>
+                    <li><a href="/Home/Contact">Contact</a></li>
+                </ul>
+
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Account/Register">Register</a></li>
+                    <li><a href="/Account/Login">Log in</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
     <div class="row">
-        <div class="col-md-10">
-            <p>
-                @Html.Raw(TempData["message"])
-            </p>
+
+
+        @{
+            ViewBag.Title = "Home Page";
+        }
+
+        @model OnlineExaminationSystem.Models.SessionModel
+        <div class="jumbotron">
+
+            <h2><span style="color:darkorange"><i>Online </i></span>Exam System</h2>
         </div>
+        @if (TempData["message"] != null)
+        {
+            <div class="row">
+                <div class="col-md-10">
+                    <p>
+                        @Html.Raw(TempData["message"])
+                    </p>
+                </div>
+            </div>
+        }
+
+        @using (Html.BeginForm("Instructions", "Home", FormMethod.Post))
+        {
+
+            <div class="container">
+                <div class="row form-horizontal">
+
+                    <div class="form-group">
+                        <div class="col-md-3">@Html.Label("Select Test")</div>
+                        <div class="col-md-5">@Html.DropDownListFor(x => x.TestId, new SelectList(ViewBag.Tests, "Id", "Name", Model.TestId), "--Select Test--", new { @class = "form-control" })</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">@Html.Label("Enter Name")</div>
+                        <div class="col-md-5">@Html.TextBoxFor(x => x.UserName, Model.UserName, new { @class = "form-control" })</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">@Html.Label("Enter Email")</div>
+                        <div class="col-md-5">@Html.TextBoxFor(x => x.Email, Model.Email, new { @class = "form-control" })</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">@Html.Label("Enter Phone")</div>
+                        <div class="col-md-5">@Html.TextBoxFor(x => x.Phone, Model.Phone, new { @class = "form-control" })</div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-5"><button type="submit" class="btn btn-primary">Continue</button></div>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+
+
     </div>
-}
-
-@using (Html.BeginForm("Instructions", "Home", FormMethod.Post))
-{
-
-<div class="container">
-    <div class="row form-horizontal">
-
-        <div class="form-group">
-            <div class="col-md-3">@Html.Label("Select Test")</div>
-            <div class="col-md-5">@Html.DropDownListFor(x=>x.TestId,new SelectList(ViewBag.Tests,"Id","Name",Model.TestId),"--Select Test--", new { @class="form-control"})</div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-3">@Html.Label("Enter Name")</div>
-            <div class="col-md-5">@Html.TextBoxFor(x => x.UserName, Model.UserName, new { @class = "form-control" })</div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-3">@Html.Label("Enter Email")</div>
-            <div class="col-md-5">@Html.TextBoxFor(x => x.Email, Model.Email, new { @class = "form-control" })</div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-3">@Html.Label("Enter Phone")</div>
-            <div class="col-md-5">@Html.TextBoxFor(x => x.Phone, Model.Phone, new { @class = "form-control" })</div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-3"></div>
-            <div class="col-md-5"><button type="submit" class="btn btn-primary">Continue</button></div>
-        </div>
-    </div>
-    </div>
-
-}
