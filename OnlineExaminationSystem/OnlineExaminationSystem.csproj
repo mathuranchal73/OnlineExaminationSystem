@@ -434,8 +434,8 @@
     <Compile Include="Models\AccountViewModels\LoginViewModel.cs" />
     <Compile Include="Models\AccountViewModels\LoginWith2faViewModel.cs" />
     <Compile Include="Models\AccountViewModels\LoginWithRecoveryCodeViewModel.cs" />
-    <Compile Include="Models\AccountViewModels\RegisterViewModel.cs" />
     <Compile Include="Models\AccountViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\RegisterViewModel.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ChoiceModel.cs" />
     <Compile Include="Models\QuestionModel.cs" />
@@ -498,6 +498,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <EntityDeploy Include="ExamModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -528,12 +529,14 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Instructions.cshtml" />
     <Content Include="Views\Home\EvalPage.cshtml" />
+    <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

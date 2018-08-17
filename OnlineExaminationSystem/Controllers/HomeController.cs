@@ -187,11 +187,21 @@ namespace OnlineExaminationSystem.Controllers
             }
 
         }
+
+        public ActionResult About()
+        {
+            ViewData["Message"] = "Your application description page.";
+
+            return View();
+        }
+
+
         [HttpPost]
         public ActionResult PostAnswer(AnswerModel choices)
         {
             var _ctx = new OESEntities2();
-            var registration = _ctx.Registrations.Where(x => x.Token==choices.Token).FirstOrDefault();
+            //verify that the user is a registered and is allowed to check the question
+            var registration = _ctx.Registrations.Where(x => (x.Token==choices.Token)).FirstOrDefault();
             if (registration == null)
             {
                 TempData["message"] = "This token is invalid";
@@ -209,7 +219,7 @@ namespace OnlineExaminationSystem.Controllers
             {
                 TQId = x.Id,
                 QT = x.Question.QuestionType,
-                QID = x.Id,
+                QID = x.QuestionId,
                 POINT = (double)x.Question.Points
             }).FirstOrDefault();
 
@@ -217,7 +227,7 @@ namespace OnlineExaminationSystem.Controllers
             {
                 if (choices.UserChoices.Count > 1)
                 {
-                    var allPointValueOfChoices =
+                    List<TestXPaper> allPointValueOfChoices =
                         (
                         from a in _ctx.Choices.Where(x => (x.isActive == 1))
                         join b in choices.UserSelectedId on a.Id equals b
@@ -225,7 +235,7 @@ namespace OnlineExaminationSystem.Controllers
                         .Select(x => new TestXPaper()
                         {
                             RegistrationId = registration.Id,
-                            TestXQuestionId = testQuestionInfo.QID,
+                            TestXQuestionId = testQuestionInfo.TQId,
                             ChoiceId = x.Id,
                             Answer = "CHECKED",
                             MarkScored = Math.Floor((decimal)testQuestionInfo.POINT / 100.0M) * (decimal)(x.Points)
@@ -233,6 +243,7 @@ namespace OnlineExaminationSystem.Controllers
                         ).ToList();
 
                     _ctx.TestXPapers.AddRange(allPointValueOfChoices);
+                    
                 }
                 else
                 {
@@ -258,18 +269,18 @@ namespace OnlineExaminationSystem.Controllers
             
             if (choices.Direction.Equals("forward", StringComparison.CurrentCultureIgnoreCase))
             {
-                nextQuestionNumber = _ctx.TestXQuestions.Where(x => x.TestId == choices.TestId
+                nextQuestionNumber =Convert.ToInt32( _ctx.TestXQuestions.Where(x => x.TestId == choices.TestId
                 && x.QuestionNumber > choices.QuestionId)
-               .OrderBy(x => x.QuestionNumber).Take(1).Select(x => x.QuestionNumber).FirstOrDefault().Value;
+               .OrderBy(x => x.QuestionNumber).Take(1).Select(x => x.QuestionNumber).FirstOrDefault());
                 
                 
             }
 
             else
             {
-                nextQuestionNumber = _ctx.TestXQuestions.Where(x => x.TestId == choices.TestId
+                nextQuestionNumber = Convert.ToInt32(_ctx.TestXQuestions.Where(x => x.TestId == choices.TestId
                 && x.QuestionNumber > choices.QuestionId)
-               .OrderByDescending(x => x.QuestionNumber).Take(1).Select(x => x.QuestionNumber).FirstOrDefault().Value;
+               .OrderByDescending(x => x.QuestionNumber).Take(1).Select(x => x.QuestionNumber).FirstOrDefault());
             }
 
             if (nextQuestionNumber < 1)
@@ -285,5 +296,9 @@ namespace OnlineExaminationSystem.Controllers
                     @qno = nextQuestionNumber
                 });
         }
+
+
+       
+
     }
 }

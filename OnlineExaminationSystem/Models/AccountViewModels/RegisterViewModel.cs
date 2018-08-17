@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace C2C2.Models.AccountViewModels
+namespace OnlineExaminationSystem.Models.AccountViewModels
 {
-    public class RegisterViewModel
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    public partial class RegisterViewModel
     {
         [Required]
         [EmailAddress]

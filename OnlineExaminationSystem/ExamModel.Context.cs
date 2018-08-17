@@ -36,5 +36,6 @@ namespace OnlineExaminationSystem
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<TestXPaper> TestXPapers { get; set; }
         public virtual DbSet<TestXQuestion> TestXQuestions { get; set; }
+
     }
 }
