@@ -239,9 +239,10 @@ namespace OnlineExaminationSystem.Controllers
                             ChoiceId = x.Id,
                             Answer = "CHECKED",
                             MarkScored = Math.Floor((decimal)testQuestionInfo.POINT / 100.0M) * (decimal)(x.Points)
+                            
                         }
                         ).ToList();
-
+                   
                     _ctx.TestXPapers.AddRange(allPointValueOfChoices);
                     
                 }

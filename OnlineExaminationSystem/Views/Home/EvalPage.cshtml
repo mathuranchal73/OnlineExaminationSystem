@@ -27,7 +27,7 @@
                 <tr>
 
 
-                    <td>><a href="javascript:void(0);" class="btn btn-primary" onclick="saveBackward(this);"><< Save & Previous</a></td>
+                    <td><a href="javascript:void(0);" class="btn btn-primary" onclick="saveBackward(this);"><< Save & Previous</a></td>
                     <td><a href="@Url.Action("EvalPage", new { @token = Session["TOKEN"], @tid = Session["TESTID"], @qno = (Model.QuestionNumber)-1 })" class="btn btn-default bg-primary">|<< Prev</a></td>
 
                     @for (int i = 0; i < Model.TotalQuestionInSet; i++)

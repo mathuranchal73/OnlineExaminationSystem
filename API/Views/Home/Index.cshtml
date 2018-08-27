@@ -1,0 +1,137 @@
+﻿<html ng-app="crudModule">
+@{
+    ViewBag.Title = "Index";
+}
+
+<head title="">
+    <style type="text/css">
+        #tblContainer, #tblcollections, #tblCRUD, td {
+            border: double;
+        }
+
+        th {
+            background-color: darkgray;
+        }
+
+        #dvcollection {
+            height: 500px;
+            overflow-y: scroll;
+        }
+    </style>
+
+
+</head>
+<h2>Using Angular for Performing CRUD Operations</h2>
+<body>
+    <table id="tblContainer" ng-controller="crudController">
+        <tr>
+            <td>
+                <table id="tblCRUD">
+                    <tr>
+                        <td>
+                            <span>Id</span>
+                        </td>
+                        <td>
+                            <input type="text" id="id" readonly="readonly" ng-model="id" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>QuestionCategoryId</span>
+                        </td>
+                        <td>
+                            <input type="text" id="QuestionCategoryId" required ng-model="QuestionCategoryId" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>QuestionType</span>
+                        </td>
+                        <td>
+                            <input type="text" id="QuestionType" required ng-model="QuestionType" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Question1</span>
+                        </td>
+                        <td>
+                            <input type="text" id="Question1" required ng-model="Question1" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>ExhibitId</span>
+                        </td>
+                        <td>
+                            <input type="text" id="ExhibitId" required ng-model="ExhibitId" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Points</span>
+                        </td>
+                        <td>
+                            <input type="text" id="Points" required ng-model="Points" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>isActive</span>
+                        </td>
+                        <td>
+                            <input type="text" id="isActive" required ng-model="isActive" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" id="new" value="New" ng-click="clear()" />
+                        </td>
+                        <td>
+                            <input type="button" id="save" value="Save" ng-click="save()" />
+                        </td>
+                        <td>
+                            <input type="button" id="delete" value="Delete" ng-click="delete()" />
+                        </td>
+                    </tr>
+                </table>
+                <div>{{Message}}</div>
+            </td>
+            <td>
+                <div id="dvcollection">
+                    <table id="tblcollections">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>QuestionCategoryId</th>
+                                <th>QuestionType</th>
+                                <th>Question1</th>
+                                <th>ExhibitId</th>
+                                <th>Points</th>
+                                <th>isActive</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="que in Question">
+                            <tr ng-click="get(que)">
+                                <td> <span>{{que.id}}</span></td>
+                                <td> <span>{{que.QuestionCategoryId}}</span></td>
+                                <td> <span>{{que.QuestionType}}</span></td>
+                                <td> <span>{{que.Question1}}</span></td>
+                                <td> <span>{{que.ExhibitId}}</span></td>
+                                <td> <span>{{que.Points}}</span></td>
+                                <td> <span>{{que.isActive}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/angular-route.js"></script>
+<script src="~/Scripts/MyScripts/Module.js"></script>
+<script src="~/Scripts/MyScripts/Service.js"></script>
+<script src="~/Scripts/MyScripts/Controller.js"></script>

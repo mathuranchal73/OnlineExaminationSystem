@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineExaminationSystem", "OnlineExaminationSystem\OnlineExaminationSystem.csproj", "{E52A9BD6-BACC-4EC8-B553-04B3F3D61609}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineExaminationSystemTests", "OnlineExaminationSystemTests\OnlineExaminationSystemTests.csproj", "{385CDED1-FCD7-46EA-A062-1702F517BFC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{725371D8-06B4-447E-9343-90F86AA6A54B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{E52A9BD6-BACC-4EC8-B553-04B3F3D61609}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E52A9BD6-BACC-4EC8-B553-04B3F3D61609}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E52A9BD6-BACC-4EC8-B553-04B3F3D61609}.Release|Any CPU.Build.0 = Release|Any CPU
-		{385CDED1-FCD7-46EA-A062-1702F517BFC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{385CDED1-FCD7-46EA-A062-1702F517BFC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{385CDED1-FCD7-46EA-A062-1702F517BFC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{385CDED1-FCD7-46EA-A062-1702F517BFC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{725371D8-06B4-447E-9343-90F86AA6A54B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{725371D8-06B4-447E-9343-90F86AA6A54B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{725371D8-06B4-447E-9343-90F86AA6A54B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{725371D8-06B4-447E-9343-90F86AA6A54B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
