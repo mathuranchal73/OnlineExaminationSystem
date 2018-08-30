@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineExaminationSystem", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{725371D8-06B4-447E-9343-90F86AA6A54B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalAccountsApp", "LocalAccountsApp\LocalAccountsApp.csproj", "{4F8B7418-4CC3-40D4-92E8-0AB82285C32C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPA", "SPA\SPA.csproj", "{C820F6BE-B128-4A51-91B8-BA11870BAF2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{725371D8-06B4-447E-9343-90F86AA6A54B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{725371D8-06B4-447E-9343-90F86AA6A54B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{725371D8-06B4-447E-9343-90F86AA6A54B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F8B7418-4CC3-40D4-92E8-0AB82285C32C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F8B7418-4CC3-40D4-92E8-0AB82285C32C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F8B7418-4CC3-40D4-92E8-0AB82285C32C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F8B7418-4CC3-40D4-92E8-0AB82285C32C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C820F6BE-B128-4A51-91B8-BA11870BAF2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C820F6BE-B128-4A51-91B8-BA11870BAF2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C820F6BE-B128-4A51-91B8-BA11870BAF2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C820F6BE-B128-4A51-91B8-BA11870BAF2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
