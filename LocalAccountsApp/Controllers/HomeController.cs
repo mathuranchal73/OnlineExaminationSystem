@@ -13,6 +13,7 @@ namespace LocalAccountsApp.Controllers
             ViewBag.Title = "Home Page";
 
             return View();
+
         }
     }
 }

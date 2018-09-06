@@ -16,5 +16,7 @@ namespace LocalAccountsApp.Controllers
             var userName = this.RequestContext.Principal.Identity.Name;
             return String.Format("Hello, {0}.", userName);
         }
+
+       
     }
 }
